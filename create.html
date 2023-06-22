@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <title>Create Page</title>
+</head>
+<body>
+    <div id="searchQuery">
+        <input type="text" placeholder="Search">
+        <!-- later create this to be a search icon  -->
+        <input id="searchSubmit" type="submit" value="Add">
+    </div>
+    <section id="printSection">
+        <div class="exerciseContainer">
+            <div id="closeTogether">
+            <button class="modalBtn">+</button>
+            <div class="text">
+            <p class="attribute">Incline</p>
+            <h2 id="mainTitle">Bench Press</h2>
+            </div></div>
+
+            <div class="setInput">
+                <input class="input" type="text" placeholder="reps">
+                <input class="input" type="text" placeholder="lbs">
+                <button id="newSetBtn">~</button>
+            </div>
+        </div>
+        <div class="modalContent">
+        <form class="popupOptions">
+            <!-- look into syntax of inputs  -->
+            <input type="radio">Barbell<br>
+            <input type="radio">Dumbbell<br>
+            <button id="addAttributes">Apply</button><br>
+            <button id="closeModal" class="close">close</button>
+        </form>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <button>Send</button>
+        <button>Save</button>
+    </footer>
+<script src="./assets/create.js"></script> 
+</body>
+</html>
