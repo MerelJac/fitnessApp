@@ -24,6 +24,10 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-top: 5px;
 }
 
 .setInput {
@@ -38,9 +42,10 @@ p {
 footer {
     display: flex;
     flex-direction: row;
+    justify-content: stretch;
     position: fixed;
     bottom: 0;
-    left: 0;
+    left: 36%;
 }
 
 .modalContent {
