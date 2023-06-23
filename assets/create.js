@@ -40,8 +40,10 @@ function getCheckedRadioValue() {
             const lableElement = document.querySelector(`label[for="${radioInput[r].id}"]`);
             const labelText = lableElement.textContent;
             attributeArray.push(labelText);
+            radioInput[r].checked = false;
         }
     }
+    
     modalSection.style.display = "none";
     let p = document.querySelector(".attribute");
     p.textContent = attributeArray.join(', ');
@@ -101,14 +103,16 @@ function generateExerciseContainer(searchWord) {
     exerciseContainer.appendChild(setInputDiv);
 
     printSection.prepend(exerciseContainer);
-};
 
-var allModalBtns = document.getElementsByClassName('modalBtn');
-for (var m = 0; m < allModalBtns.length; m++) {
+    var allModalBtns = document.getElementsByClassName('modalBtn');
+    for (var m = 0; m < allModalBtns.length; m++) {
     allModalBtns[m].addEventListener("click", function() {
         var container = this.parentNode;
         var containerID = container.id;
+        console.log("clicked")
+        modalSection.style.display = "block";
     })
 }
+};
 
 
