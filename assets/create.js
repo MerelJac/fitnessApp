@@ -63,7 +63,7 @@ function getCheckedRadioValue(globalApplyParent) {
 
 function generateExerciseContainer(newSearchWord, attributesToPass) {
     attributeArray = [];
-    
+
     const exerciseContainer = document.createElement('div');
     exerciseContainer.classList.add('exerciseContainer')
     exerciseContainer.id = newSearchWord;
@@ -165,10 +165,10 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     
     const applyBtn = document.querySelector("#addAttributes")
     applyBtn.addEventListener("click", (event) => {
+        attributeArray = [];
         event.preventDefault();
         let radioInput = document.querySelectorAll(`input[type='radio']`);
         radioInput.checked = false;
-
         getCheckedRadioValue(globalApplyParent)
     })};
 
