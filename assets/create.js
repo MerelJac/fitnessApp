@@ -9,6 +9,7 @@ const exerciseContainer = document.querySelector(".exerciseContainer");
 var allAttributesArray = ['Incline', 'Decline', 'Barbell', 'Dumbbell', 'Stability Ball', 'Neutral Grip', 'Close Grip', 'Wide Grip' ];
 var resultsArray = [];
 
+var globalApplyParent;
 
 searchSubmitBtn.addEventListener("click", () => {
     resultsArray = [];
@@ -38,21 +39,22 @@ searchSubmitBtn.addEventListener("click", () => {
 
 
 let attributeArray = [];
-function getCheckedRadioValue(string) {
-    let radioInput = document.querySelectorAll("input[type='radio']");
-    // empty the array 
-    attributeArray = [];
+function getCheckedRadioValue(globalApplyParent) {
+    let radioInput = document.querySelectorAll(`input[type='radio']`);    
     for (let r = 0; r < radioInput.length; r++) {
         if (radioInput[r].checked && !attributeArray.includes(radioInput[r].value)) {
-            const lableElement = document.querySelector(`label[for="${radioInput[r].id}"]`);
-            const labelText = lableElement.textContent;
+            const labelElement = document.querySelector(`label[for="${radioInput[r].id}"]`);
+            const labelText = labelElement.textContent;
             attributeArray.push(labelText);
             radioInput[r].checked = false;
         }
     }
 
     modalSection.style.display = "none";
-    let p = document.querySelector(".attribute");
+
+    var containerP = document.getElementById(globalApplyParent);
+    console.log(containerP);
+    var p = containerP.querySelector(".attribute")
     p.textContent = attributeArray.join(', ');
     console.log(attributeArray);
     console.log(p.textContent);
@@ -60,6 +62,8 @@ function getCheckedRadioValue(string) {
 }
 
 function generateExerciseContainer(newSearchWord, attributesToPass) {
+    attributeArray = [];
+    
     const exerciseContainer = document.createElement('div');
     exerciseContainer.classList.add('exerciseContainer')
     exerciseContainer.id = newSearchWord;
@@ -143,9 +147,11 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
         modalSection.style.display = "block";
 
         applyBtn.dataset.containerId = container.id;
-        console.log(container.id)
+        globalApplyParent = container.id;
+        console.log(globalApplyParent)
     })
-    }
+}
+
     modalBtn.addEventListener("click", () => {
         modalSection.style.display = "block";
     });
@@ -157,16 +163,12 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
         modalSection.style.display = "none";
     });
     
-    // Apply button
-    // const allApplyBtn = document.getElementById("addAttributes");
-    // for (var a = 0; a < allApplyBtn.length; a++) {
-    //     allApplyBtn[a].addEventListener("click", (event) => {
-    //         event.preventDefault();
-    //         getCheckedRadioValue();
-    //     });     
-    // }
     const applyBtn = document.querySelector("#addAttributes")
     applyBtn.addEventListener("click", (event) => {
         event.preventDefault();
-        getCheckedRadioValue()
+        let radioInput = document.querySelectorAll(`input[type='radio']`);
+        radioInput.checked = false;
+
+        getCheckedRadioValue(globalApplyParent)
     })};
+
