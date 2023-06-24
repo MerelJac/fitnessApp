@@ -37,6 +37,7 @@ p {
 .input {
     width: 30px;
     height: 20px;
+    margin-left: 5px;
 }
 
 footer {
@@ -81,8 +82,17 @@ footer {
 #newSetBtn {
     width: 30px;
     height: 26px;
+    margin-left: 5px;
 }
 
 .labeling {
     line-height: 0;
+}
+
+.smallLabel {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 3px;
+    /* font-style: italic; */
 }
