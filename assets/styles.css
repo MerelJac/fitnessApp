@@ -82,3 +82,7 @@ footer {
     width: 30px;
     height: 26px;
 }
+
+.labeling {
+    line-height: 0;
+}
