@@ -130,8 +130,8 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     newSetBtn.id = 'newSetBtn';
     newSetBtn.textContent = '~';
 
-    setInputDiv.appendChild(repsDiv);
     setInputDiv.appendChild(lbsDiv);
+    setInputDiv.appendChild(repsDiv);
     setInputDiv.appendChild(newSetBtn);
 
     exerciseContainer.appendChild(setInputDiv);
@@ -150,7 +150,7 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
         globalApplyParent = container.id;
         console.log(globalApplyParent)
     })
-}
+    }
 
     modalBtn.addEventListener("click", () => {
         modalSection.style.display = "block";
@@ -170,5 +170,16 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
         let radioInput = document.querySelectorAll(`input[type='radio']`);
         radioInput.checked = false;
         getCheckedRadioValue(globalApplyParent)
-    })};
+    })
+
+    newSetBtn.addEventListener("click", () => {
+        if (lbsInput.value > 0) {
+            console.log(lbsInput.value + 'lbs x ' + repsInput.value);
+        } else {console.log(repsInput.value);
+    }
+
+    })
+
+// end of generateExerciseContainer()
+};
 
