@@ -6,7 +6,7 @@ const printSection = document.querySelector("#printSection");
 const exerciseContainer = document.querySelector(".exerciseContainer");
 
 // update as needed 
-var allAttributesArray = ['Incline', 'Decline', 'Barbell', 'Dumbbell', 'Stability Ball', 'Neutral Grip', 'Close Grip', 'Wide Grip' ];
+var allAttributesArray = ['Incline', 'Decline', 'Barbell', 'Dumbbell', 'Stability Ball', 'Neutral Grip', 'Close Grip', 'Wide Grip', 'BOSU' ];
 var resultsArray = [];
 
 var globalApplyParent;
@@ -32,7 +32,7 @@ searchSubmitBtn.addEventListener("click", () => {
         var newSearchWord = phrase.join(' ');
     }
 
-    var attributesToPass = resultsArray;
+    var attributesToPass = resultsArray.join(', ');
     generateExerciseContainer(newSearchWord, [attributesToPass]);
     searchQuery.value = "";
     })
@@ -136,7 +136,17 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
 
     exerciseContainer.appendChild(setInputDiv);
 
-    printSection.prepend(exerciseContainer);
+    const printRepsDiv = document.createElement('div');
+    printRepsDiv.classList.add('belowForReps');
+
+    const wholeSectionContainer = document.createElement('div');
+    wholeSectionContainer.classList.add('eveything');
+
+    wholeSectionContainer.appendChild(exerciseContainer);
+    wholeSectionContainer.appendChild(printRepsDiv);
+
+
+    printSection.prepend(wholeSectionContainer);
 
     // for all attribute modal buttons
     var allModalBtns = document.getElementsByClassName('modalBtn');
@@ -165,7 +175,6 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     
     const applyBtn = document.querySelector("#addAttributes")
     applyBtn.addEventListener("click", (event) => {
-        attributeArray = [];
         event.preventDefault();
         let radioInput = document.querySelectorAll(`input[type='radio']`);
         radioInput.checked = false;
@@ -173,13 +182,39 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     })
 
     newSetBtn.addEventListener("click", () => {
-        if (lbsInput.value > 0) {
-            console.log(lbsInput.value + 'lbs x ' + repsInput.value);
-        } else {console.log(repsInput.value);
+        if (lbsInput.value >= 1) {
+            const printReps = document.createElement('p');
+            printReps.classList.add('savedSets');
+            printReps.textContent = (lbsInput.value + 'lbs x ' + repsInput.value);
+            repsInput.value = "";
+            lbsInput.value = "";
+            printRepsDiv.appendChild(printReps)
+        } else {
+            const printReps = document.createElement('p');
+            printReps.classList.add('savedSets');
+            printReps.textContent = (repsInput.value);
+            repsInput.value = "";
+            lbsInput.value = "";
+            printRepsDiv.appendChild(printReps)
+
     }
 
     })
 
+    const saveBtn = document.querySelector("#saveBtn");
+    saveBtn.addEventListener("click", () => {
+    console.log("clicked")
+    var exerciseName = attributeP.textContent + ' ' + titleH2.textContent;
+    var setInfo = printRepsDiv.textContent;
+    var saveObject = {
+        date: "enter today's date",
+        name: exerciseName,
+        setInfo: setInfo,}
+    JSON.stringify(localStorage.setItem('workout', saveObject));
+    console.log(setInfo)
+    console.log(exerciseName)
+    console.log(localStorage.getItem(JSON.parse('workout')))
+})
 // end of generateExerciseContainer()
 };
 
