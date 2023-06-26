@@ -12,6 +12,8 @@ var resultsArray = [];
 var globalApplyParent;
 var today = dayjs();
 
+var saveArray = [];
+
 // var saveWorkout = [{name: "", setInfo: [{}]}];
 
 searchSubmitBtn.addEventListener("click", () => {
@@ -139,6 +141,8 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
         var thisAttribute = textDiv.querySelector('.attribute').textContent;
         var thisName = textDiv.querySelector('#mainTitle').textContent;
         var thisReps = printRepsDiv.textContent;
+        var exerciseName = thisAttribute + ' ' + thisName;
+        saveArray.push({exerciseName, thisReps});
         console.log(thisAttribute, thisName, thisReps);
         })  ;
 
