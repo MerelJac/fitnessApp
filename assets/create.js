@@ -84,7 +84,13 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
 
     const attributeP = document.createElement('p');
     attributeP.classList.add('attribute');
+    attributeP.id = 'hidden';
     attributeP.textContent = attributesToPass || '';
+    if (attributeP.textContent = '') {
+        attributeP.id = 'hidden';
+    } else {
+        attributeP.id = 'show'
+    }
 
     const titleH2 = document.createElement('h2');
     titleH2.id = 'mainTitle';
@@ -141,9 +147,10 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
             allSetInfo.push(div.textContent);
         })
         var exerciseName = thisAttribute + ' ' + thisName;
-        saveArray.push({exerciseName, allSetInfo});
+        var date = today.format('MMM D');
+        saveArray.push({exerciseName, date, allSetInfo});
         console.log(exerciseName, allSetInfo);
-        localStorage.setItem('workout', JSON.stringify(saveArray));
+        localStorage.setItem("workout", JSON.stringify(saveArray));
         });
 
 

@@ -1,3 +1,6 @@
+html {
+    background: #444152;
+}
 * {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     border-radius: 10px;
@@ -39,10 +42,13 @@ h2 {
 }
 
 .input {
-    width: 30px;
+    width: 41px;
     height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     margin-left: 5px;
     border: #fefefe;
+    text-align: center;
 }
 
 footer {
@@ -56,7 +62,9 @@ footer {
     display: flex;
     flex-wrap: wrap;
     word-wrap: break-word;
+    font-size: 10px;
 }
+
 
 .modalContent {
     display: none; /* Hidden by default */
@@ -112,10 +120,15 @@ footer {
 .everything {
     display: flex;
     flex-direction: column;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     background-color: #E4E4E6;
     border-radius: 10px;
     margin-top: 5px;
+}
+::placeholder {
+    color: #444152;
+    opacity: 80%;
+    font-size: 10px;
 }
 
 .belowForReps {
@@ -147,6 +160,7 @@ input[type=text] {
 #searchSubmit {
     background-color: #fefefe;
     border: 1px solid #444152;
+    font-size: 10px;
 
 }
 
@@ -195,5 +209,15 @@ a {
 
 #randomlyGen {
     background-color: #E4E4E6;
-
 }
+
+#mainTitle {
+    font-size: 15px;
+}
+.mainNav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
