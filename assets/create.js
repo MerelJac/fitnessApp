@@ -10,9 +10,14 @@ var allAttributesArray = ['Incline', 'Decline', 'Barbell', 'Dumbbell', 'Stabilit
 var resultsArray = [];
 
 var globalApplyParent;
+var today = dayjs();
+
+// var saveWorkout = [{name: "", setInfo: [{}]}];
 
 searchSubmitBtn.addEventListener("click", () => {
     resultsArray = [];
+    // var newWorkout = {name: "", setInfo: [{}]};
+    // saveWorkout.push(newWorkout);
     var searchWord = searchQuery.value;
     var splitPhrase = searchWord.split(' ');
     var capializedWords = [];
@@ -26,17 +31,16 @@ searchSubmitBtn.addEventListener("click", () => {
     for (var w = phrase.length - 1; w >= 0; w--) {
         if (allAttributesArray.includes(phrase[w])) {
             resultsArray.push(phrase[w]);
-            console.log(resultsArray)
             phrase.splice(w, 1);
         }
         var newSearchWord = phrase.join(' ');
+        // saveWorkout[0].name = capializedWords.join(' ');
     }
 
     var attributesToPass = resultsArray.join(', ');
     generateExerciseContainer(newSearchWord, [attributesToPass]);
     searchQuery.value = "";
     })
-
 
 let attributeArray = [];
 function getCheckedRadioValue(globalApplyParent) {
@@ -96,42 +100,22 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     const setInputDiv = document.createElement('div');
     setInputDiv.classList.add('setInput');
 
-    const repsDiv = document.createElement('div');
-    repsDiv.classList.add('labeling');
-    repsDiv.id = 'reps';
-
     const repsInput = document.createElement('input');
     repsInput.classList.add('input', 'reps');
+    repsInput.placeholder = 'reps';
     repsInput.type = 'number';
-
-    const repsLabel = document.createElement('p');
-    repsLabel.classList.add('smallLabel');
-    repsLabel.textContent = 'reps';
-
-    const lbsDiv = document.createElement('div');
-    lbsDiv.classList.add('labeling');
-    lbsDiv.id = 'lbs';
 
     const lbsInput = document.createElement('input');
     lbsInput.classList.add('input', 'lbs');
+    lbsInput.placeholder = 'lbs'
     lbsInput.type = 'number';
-
-    const lbsLabel = document.createElement('p');
-    lbsLabel.classList.add('smallLabel')
-    lbsLabel.textContent = 'lbs';
-
-    repsDiv.append(repsInput);
-    repsDiv.append(repsLabel);
-
-    lbsDiv.append(lbsInput);
-    lbsDiv.append(lbsLabel);
 
     const newSetBtn = document.createElement('button');
     newSetBtn.id = 'newSetBtn';
     newSetBtn.textContent = '~';
 
-    setInputDiv.appendChild(lbsDiv);
-    setInputDiv.appendChild(repsDiv);
+    setInputDiv.appendChild(lbsInput);
+    setInputDiv.appendChild(repsInput);
     setInputDiv.appendChild(newSetBtn);
 
     exerciseContainer.appendChild(setInputDiv);
@@ -147,6 +131,12 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
 
 
     printSection.prepend(wholeSectionContainer);
+
+    var allExerciseDivs = document.querySelectorAll('.everything');
+    const saveBtn = document.querySelector("#saveBtn");
+    saveBtn.addEventListener("click", () => {
+        console.log("hi")
+        })  ;
 
     // for all attribute modal buttons
     var allModalBtns = document.getElementsByClassName('modalBtn');
@@ -186,6 +176,8 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
             const printReps = document.createElement('p');
             printReps.classList.add('savedSets');
             printReps.textContent = (lbsInput.value + 'lbs x ' + repsInput.value);
+
+            // saveWorkout[0].setInfo.push(printReps.textContent);
             repsInput.value = "";
             lbsInput.value = "";
             printRepsDiv.appendChild(printReps)
@@ -201,20 +193,37 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
 
     })
 
-    const saveBtn = document.querySelector("#saveBtn");
-    saveBtn.addEventListener("click", () => {
-    console.log("clicked")
-    var exerciseName = attributeP.textContent + ' ' + titleH2.textContent;
-    var setInfo = printRepsDiv.textContent;
-    var saveObject = {
-        date: "enter today's date",
-        name: exerciseName,
-        setInfo: setInfo,}
-    JSON.stringify(localStorage.setItem('workout', saveObject));
-    console.log(setInfo)
-    console.log(exerciseName)
-    console.log(localStorage.getItem(JSON.parse('workout')))
-})
+    
+
 // end of generateExerciseContainer()
 };
 
+
+
+
+// svaed for later maybe
+
+    // const allExerciseDivs = document.getElementsByClassName('everything');
+    // let workoutInfo = [ { name: [], set : [] } ];
+    // for (var i = 0; i < allExerciseDivs.length; i++) {
+    //     var divWorking = allExerciseDivs[i];
+    //     var findExerciseAttribute = divWorking.querySelector('.attribute');
+    //     var findExerciseName = divWorking.querySelector('#mainTitle');
+    //     var exerciseName = findExerciseAttribute.textContent + ' ' + findExerciseName.textContent;
+    //     var findSetInfo = divWorking.querySelector('.belowForReps');
+    //     var setInfo = findSetInfo.textContent;
+    //     console.log(exerciseName);
+    //     console.log(setInfo);
+    //     workoutInfo.name.push(exerciseName);
+    //     workoutInfo.set.push(setInfo);
+    //     console.log(workoutInfo);
+    // } 
+
+    // var saveObject = {
+    //     date: today.format('MMM D'),
+    //     name: exerciseName,
+    //     setInfo: workoutInfo,}
+    // localStorage.setItem('workout', JSON.stringify(saveObject));
+    // console.log(setInfo)
+    // console.log(exerciseName)
+    // console.log(JSON.parse(localStorage.getItem('workout')))
