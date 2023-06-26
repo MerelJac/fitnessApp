@@ -86,11 +86,6 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     attributeP.classList.add('attribute');
     attributeP.id = 'hidden';
     attributeP.textContent = attributesToPass || '';
-    if (attributeP.textContent = '') {
-        attributeP.id = 'hidden';
-    } else {
-        attributeP.id = 'show'
-    }
 
     const titleH2 = document.createElement('h2');
     titleH2.id = 'mainTitle';
@@ -151,6 +146,7 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
         saveArray.push({exerciseName, date, allSetInfo});
         console.log(exerciseName, allSetInfo);
         localStorage.setItem("workout", JSON.stringify(saveArray));
+        window.location.href = "./saved.html"
         });
 
 
@@ -201,8 +197,7 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
             printReps.textContent = (repsInput.value);
             repsInput.value = "";
             lbsInput.value = "";
-            printRepsDiv.appendChild(printReps)
-
+            printRepsDiv.appendChild(printReps);
     }
 
     })
