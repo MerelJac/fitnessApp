@@ -124,7 +124,7 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     printRepsDiv.classList.add('belowForReps');
 
     const wholeSectionContainer = document.createElement('div');
-    wholeSectionContainer.classList.add('eveything');
+    wholeSectionContainer.classList.add('everything');
 
     wholeSectionContainer.appendChild(exerciseContainer);
     wholeSectionContainer.appendChild(printRepsDiv);
@@ -132,11 +132,16 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
 
     printSection.prepend(wholeSectionContainer);
 
-    var allExerciseDivs = document.querySelectorAll('.everything');
+    // var printSectionFind = document.querySelector('#printSection');
+    // var allExerciseDivs = printSectionFind.querySelectorAll('.everything');
     const saveBtn = document.querySelector("#saveBtn");
     saveBtn.addEventListener("click", () => {
-        console.log("hi")
+        var thisAttribute = textDiv.querySelector('.attribute').textContent;
+        var thisName = textDiv.querySelector('#mainTitle').textContent;
+        var thisReps = printRepsDiv.textContent;
+        console.log(thisAttribute, thisName, thisReps);
         })  ;
+
 
     // for all attribute modal buttons
     var allModalBtns = document.getElementsByClassName('modalBtn');
@@ -176,8 +181,6 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
             const printReps = document.createElement('p');
             printReps.classList.add('savedSets');
             printReps.textContent = (lbsInput.value + 'lbs x ' + repsInput.value);
-
-            // saveWorkout[0].setInfo.push(printReps.textContent);
             repsInput.value = "";
             lbsInput.value = "";
             printRepsDiv.appendChild(printReps)
@@ -193,7 +196,6 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
 
     })
 
-    
 
 // end of generateExerciseContainer()
 };
