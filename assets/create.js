@@ -12,14 +12,11 @@ var resultsArray = [];
 var globalApplyParent;
 var today = dayjs();
 
+// for local storage
 var saveArray = [];
-
-// var saveWorkout = [{name: "", setInfo: [{}]}];
 
 searchSubmitBtn.addEventListener("click", () => {
     resultsArray = [];
-    // var newWorkout = {name: "", setInfo: [{}]};
-    // saveWorkout.push(newWorkout);
     var searchWord = searchQuery.value;
     var splitPhrase = searchWord.split(' ');
     var capializedWords = [];
@@ -134,8 +131,6 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
 
     printSection.prepend(wholeSectionContainer);
 
-    // var printSectionFind = document.querySelector('#printSection');
-    // var allExerciseDivs = printSectionFind.querySelectorAll('.everything');
     const saveBtn = document.querySelector("#saveBtn");
     saveBtn.addEventListener("click", () => {
         var thisAttribute = textDiv.querySelector('.attribute').textContent;
@@ -148,7 +143,8 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
         var exerciseName = thisAttribute + ' ' + thisName;
         saveArray.push({exerciseName, allSetInfo});
         console.log(exerciseName, allSetInfo);
-        })  ;
+        localStorage.setItem('workout', JSON.stringify(saveArray));
+        });
 
 
     // for all attribute modal buttons
@@ -210,30 +206,3 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
 
 
 
-
-// svaed for later maybe
-
-    // const allExerciseDivs = document.getElementsByClassName('everything');
-    // let workoutInfo = [ { name: [], set : [] } ];
-    // for (var i = 0; i < allExerciseDivs.length; i++) {
-    //     var divWorking = allExerciseDivs[i];
-    //     var findExerciseAttribute = divWorking.querySelector('.attribute');
-    //     var findExerciseName = divWorking.querySelector('#mainTitle');
-    //     var exerciseName = findExerciseAttribute.textContent + ' ' + findExerciseName.textContent;
-    //     var findSetInfo = divWorking.querySelector('.belowForReps');
-    //     var setInfo = findSetInfo.textContent;
-    //     console.log(exerciseName);
-    //     console.log(setInfo);
-    //     workoutInfo.name.push(exerciseName);
-    //     workoutInfo.set.push(setInfo);
-    //     console.log(workoutInfo);
-    // } 
-
-    // var saveObject = {
-    //     date: today.format('MMM D'),
-    //     name: exerciseName,
-    //     setInfo: workoutInfo,}
-    // localStorage.setItem('workout', JSON.stringify(saveObject));
-    // console.log(setInfo)
-    // console.log(exerciseName)
-    // console.log(JSON.parse(localStorage.getItem('workout')))
