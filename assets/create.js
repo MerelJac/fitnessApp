@@ -140,10 +140,14 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     saveBtn.addEventListener("click", () => {
         var thisAttribute = textDiv.querySelector('.attribute').textContent;
         var thisName = textDiv.querySelector('#mainTitle').textContent;
-        var thisReps = printRepsDiv.textContent;
+        var allSets = printRepsDiv.querySelectorAll(".savedSets");
+        var allSetInfo = [];
+        allSets.forEach(div => {
+            allSetInfo.push(div.textContent);
+        })
         var exerciseName = thisAttribute + ' ' + thisName;
-        saveArray.push({exerciseName, thisReps});
-        console.log(thisAttribute, thisName, thisReps);
+        saveArray.push({exerciseName, allSetInfo});
+        console.log(exerciseName, allSetInfo);
         })  ;
 
 
