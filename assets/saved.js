@@ -26,3 +26,4 @@ if (savedWorkout) {
     document.body.appendChild(printWorkout); // Append the div to the document body 
     printWorkout.innerHTML += `<p>None Saved.</p>`
 };
+

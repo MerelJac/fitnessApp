@@ -245,6 +245,7 @@ a {
 
 .input-row {
     color: #CBCAD0;
+    display: flex;
 }
 
 .workoutContainer h2, .print-here p {
@@ -253,4 +254,23 @@ a {
 
 .workoutContainer {
     display: none;
+}
+
+#genBtn {
+    background-color: #CBCAD0;;
+    border: 1px solid #444152;
+    font-size: 10px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+}
+
+#generateForm {
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
 }
