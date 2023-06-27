@@ -74,10 +74,15 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     const closeTogetherDiv = document.createElement('div');
     closeTogetherDiv.id = 'closeTogether';
 
-    const modalBtn = document.createElement('button');
-    modalBtn.classList.add('modalBtn');
-    modalBtn.textContent = '+';
-    closeTogetherDiv.appendChild(modalBtn);
+    // const modalBtn = document.createElement('button');
+    // modalBtn.classList.add('modalBtn');
+
+    const image = document.createElement('img');
+    image.classList.add('modalBtn');
+    image.src = './assets/images/+.png';
+    // modalBtn.appendChild(image);
+
+    closeTogetherDiv.appendChild(image);
 
     const textDiv = document.createElement('div');
     textDiv.classList.add('text');
@@ -110,13 +115,17 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     lbsInput.placeholder = 'lbs'
     lbsInput.type = 'number';
 
-    const newSetBtn = document.createElement('button');
-    newSetBtn.id = 'newSetBtn';
-    newSetBtn.textContent = '~';
+    // const newSetBtn = document.createElement('button');
+    // newSetBtn.id = 'newSetBtn';
+    const imageRefresh = document.createElement('img');
+    imageRefresh.classList.add('icon');
+    imageRefresh.id = 'newSetBtn';
+    imageRefresh.src = './assets/images/refresh.png';
+
 
     setInputDiv.appendChild(lbsInput);
     setInputDiv.appendChild(repsInput);
-    setInputDiv.appendChild(newSetBtn);
+    setInputDiv.appendChild(imageRefresh);
 
     exerciseContainer.appendChild(setInputDiv);
 
@@ -164,7 +173,7 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     })
     }
 
-    modalBtn.addEventListener("click", () => {
+    image.addEventListener("click", () => {
         modalSection.style.display = "block";
     });
 
@@ -183,7 +192,7 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
         getCheckedRadioValue(globalApplyParent)
     })
 
-    newSetBtn.addEventListener("click", () => {
+    imageRefresh.addEventListener("click", () => {
         if (lbsInput.value >= 1) {
             const printReps = document.createElement('p');
             printReps.classList.add('savedSets');
