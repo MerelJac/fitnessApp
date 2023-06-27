@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <title>Randomly Generate</title>
+</head>
+<body>
+    <section class="interactContainer">
+        <form action="workout.html" method="GET">
+            <div class="input-row">
+            <input type="radio" name="body" value="upper"> Upper Body<br>
+            <input type="radio" name="body" value="lower"> Lower Body<br>
+            <input type="radio" name="body" value="full"> Full Body<br></div>
+            <input type="submit" value="Generate">
+        </form>
+    </section>
+    <section class="workoutContainer">
+        <h2>exercise list</h2>
+        <div class="print-here">
+        </div>
+    </section>
+    <section class="APIdisplayContaier">
+        <div class="info"></div>
+    </section>
+    <footer>
+        <button class="navBtn"  id="homeBtn"><a href="./index.html">Home </a></button>
+        <button class="navBtn" id="saveBtn"><a href="./saved.html">Save Workout </a></button>
+    </footer>
+    
+<script src="./assets/generate.js"></script>
+</body>
+</html>
