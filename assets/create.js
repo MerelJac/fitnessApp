@@ -79,6 +79,7 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
 
     const image = document.createElement('img');
     image.classList.add('modalBtn');
+    image.alt = 'addAttributes';
     image.src = './assets/images/+.png';
     // modalBtn.appendChild(image);
 
@@ -120,6 +121,7 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     const imageRefresh = document.createElement('img');
     imageRefresh.classList.add('icon');
     imageRefresh.id = 'newSetBtn';
+    imageRefresh.alt = 'addNewSet';
     imageRefresh.src = './assets/images/refresh.png';
 
 
@@ -197,15 +199,15 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
             const printReps = document.createElement('p');
             printReps.classList.add('savedSets');
             printReps.textContent = (lbsInput.value + 'lbs x ' + repsInput.value);
-            repsInput.value = "";
-            lbsInput.value = "";
+            // repsInput.value = "";
+            // lbsInput.value = "";
             printRepsDiv.appendChild(printReps)
         } else {
             const printReps = document.createElement('p');
             printReps.classList.add('savedSets');
             printReps.textContent = (repsInput.value);
-            repsInput.value = "";
-            lbsInput.value = "";
+            // repsInput.value = "";
+            // lbsInput.value = "";
             printRepsDiv.appendChild(printReps);
     }
 

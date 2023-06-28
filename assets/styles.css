@@ -52,8 +52,7 @@ h2 {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
+    width: 100%;
     margin-bottom: 30px
 }
 
@@ -170,7 +169,6 @@ button {
 }
 
 footer, button {
-    width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -180,10 +178,12 @@ footer, button {
 #closeModal {
     border: none;
     width: 5px;
+    margin-left: 75vw;
 }
 
 #addAttributes {
     width: fit-content;
+    margin-left: 65vw;
 }
 
 .bold {
@@ -198,6 +198,7 @@ a {
 .navBtn {
     border: 2px solid white;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 #createNew {
@@ -286,9 +287,14 @@ a {
 
 .forStyle h2, .forStyle p {
     color: #CBCAD0;
-    font-size: 20px;
+    font-size: 15px;
+    margin: 0;
 }
 
 .gif {
     width: 100px;
+}
+
+.info {
+    display: flex;
 }
