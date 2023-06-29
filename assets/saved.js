@@ -37,7 +37,7 @@ if (randomSavedWorkout) {
   thisWorkout.innerHTML += randomSavedWorkout[0];
 for (var i = 0; i < randomSavedWorkout[1].length; i++) {
   var exercise = randomSavedWorkout[1][i];
-  printWorkout.innerHTML += `<h4 class="savedTitle">${exercise}</h4>`
+  printWorkout.innerHTML += `<p class="savedTitle">${exercise}<p>`
 } 
 } else {
   var printWorkout = document.createElement('div');

@@ -93,9 +93,23 @@ function generateWorkout() {
     let exerciseList = JSON.parse(localStorage.getItem("exerciseArray"));
 
     exerciseList.forEach((element) => {
+
         var exercise = document.createElement('p');
         exercise.classList.add('everything');
+        let exerciseName = element.name;
+        console.log(exerciseName);
         exercise.innerText = element.name;
+
+        // capitalize the first letter of each word
+        let capitalizedExerciseName = exerciseName
+        .split(' ')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+
+        // remove the (male) or (female) suffix given by API
+        capitalizedExerciseName = capitalizedExerciseName.replace(/\(male\)|\(female\)/gi, '');
+
+        exercise.innerText = capitalizedExerciseName;
         exercise.addEventListener("mouseover", function() {
             infoSection.innerHTML = `<img class="gif" src="${element.link}" alt="demonstration of ${element.name}"><div class="forStyle"><h2>targeted muscle group</h2><p>${element.target}</p></div><div class="forStyle"><h2>equipment</h2><p>${element.equip}</p></div>`
         });
