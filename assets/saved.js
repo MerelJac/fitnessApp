@@ -1,4 +1,5 @@
 const savedWorkout = JSON.parse(localStorage.getItem("workout"));
+const randomSavedWorkout = JSON.parse(localStorage.getItem('randomWorkout'));
 
 
 
@@ -27,3 +28,20 @@ if (savedWorkout) {
     printWorkout.innerHTML += `<p>None Saved.</p>`
 };
 
+if (randomSavedWorkout) {
+  var printWorkout = document.createElement('div');
+  printWorkout.classList.add('printedWorkout');
+  document.body.appendChild(printWorkout);
+  var thisWorkout = document.createElement('h2');
+  printWorkout.appendChild(thisWorkout);
+  thisWorkout.innerHTML += randomSavedWorkout[0];
+for (var i = 0; i < randomSavedWorkout[1].length; i++) {
+  var exercise = randomSavedWorkout[1][i];
+  printWorkout.innerHTML += `<h4 class="savedTitle">${exercise}</h4>`
+} 
+} else {
+  var printWorkout = document.createElement('div');
+  printWorkout.classList.add('printedWorkout');
+  document.body.appendChild(printWorkout); // Append the div to the document body 
+  printWorkout.innerHTML += `<p>None Saved.</p>`
+};

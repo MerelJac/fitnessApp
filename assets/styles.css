@@ -249,8 +249,13 @@ a {
     display: flex;
 }
 
-.workoutContainer h2, .print-here p {
+.workoutContainer h2 {
     color: #CBCAD0;
+}
+
+.print-here p {
+    color: #444152;
+    padding: 10px;
 }
 
 .workoutContainer {
@@ -298,3 +303,4 @@ a {
 .info {
     display: flex;
 }
+

@@ -199,6 +199,7 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
             const printReps = document.createElement('p');
             printReps.classList.add('savedSets');
             printReps.textContent = (lbsInput.value + 'lbs x ' + repsInput.value);
+            // clears data to return placeholder
             // repsInput.value = "";
             // lbsInput.value = "";
             printRepsDiv.appendChild(printReps)
@@ -206,6 +207,7 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
             const printReps = document.createElement('p');
             printReps.classList.add('savedSets');
             printReps.textContent = (repsInput.value);
+            // clears data to return placeholder
             // repsInput.value = "";
             // lbsInput.value = "";
             printRepsDiv.appendChild(printReps);

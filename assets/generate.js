@@ -50,7 +50,6 @@ async function fetchData() {
     submitBtn.addEventListener("click", function(event) {
         // remove prevent default when page is working
         event.preventDefault();
-        console.log("clicked");
         includedExercises = [];
         if (upperChoice.checked == true) {
             for (var u = 0; u < workoutLength; u++) {
@@ -71,10 +70,6 @@ async function fetchData() {
             };
         } else if (fullbodyChoice.checked == true) {
             var fullBodyList = upperBodyExercises.concat(lowerBodyExercises, cardioExercises, coreExercises);
-            console.log(fullBodyList);
-            fullBodyList.forEach(data => {
-                console.log(data.name)
-            })
             for (var u = 0; u < workoutLength; u++) {
                 JSON.stringify(fullBodyList[u].name);
                 var pickRandomFull = fullBodyList[Math.floor(Math.random() * fullBodyList.length)];
@@ -83,7 +78,10 @@ async function fetchData() {
                 }
             };
 
-        } else {location.reload()}
+        } else {
+            location.reload();
+        }
+
         workoutContainer.style.display = 'block';
         generateWorkout();
         //save to local storage 
@@ -92,12 +90,11 @@ async function fetchData() {
 
 function generateWorkout() {
 
-    console.log(JSON.parse(localStorage.getItem("exerciseArray")));
-
     let exerciseList = JSON.parse(localStorage.getItem("exerciseArray"));
 
     exerciseList.forEach((element) => {
         var exercise = document.createElement('p');
+        exercise.classList.add('everything');
         exercise.innerText = element.name;
         exercise.addEventListener("mouseover", function() {
             infoSection.innerHTML = `<img class="gif" src="${element.link}" alt="demonstration of ${element.name}"><div class="forStyle"><h2>targeted muscle group</h2><p>${element.target}</p></div><div class="forStyle"><h2>equipment</h2><p>${element.equip}</p></div>`
@@ -107,3 +104,22 @@ function generateWorkout() {
 
 });
 }
+
+const saveBtn = document.querySelector('#saveBtn');
+const exerciseDivs = document.getElementsByClassName('everything');
+let saveArray = [];
+let allSavedInfo = [];
+
+saveBtn.addEventListener('click', () => {
+    for (var e = 0; e < exerciseDivs.length; e ++) {
+        let text = exerciseDivs[e].innerHTML;
+        saveArray.push(text);
+    }
+
+    let today = dayjs();
+    let date = today.format('MMM D');
+    allSavedInfo.push(date, saveArray);
+    localStorage.setItem('randomWorkout', JSON.stringify(allSavedInfo));
+    window.location.href = './saved.html';
+    })
+
