@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="card" id="build-workout">
+        <div id="editTitle"></div>
+        <h2 id="name">Workout of the Day</h2>
+        <p id="workout-date"></p>
+        <p id="instructions">Click the title to customize.<br>Rearrange or add exercises as needed.<br>Recommended 6-10 reps x 3 sets each.</p>
+        <p id="print-here" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="input-group mb-3">
+            <input id="input" type="text" class="form-control" placeholder="Add custom exercise" aria-label="custom-exercise" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button id="add-button" class="btn btn-outline-secondary" type="button">Add</button>
+            </div></p>
+          </div>
+    </div>
+    <script src="./random.js"></script>
+</body>
+</html>
