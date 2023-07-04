@@ -147,68 +147,15 @@ class Workout {
     wholeSectionContainer.appendChild(printRepsDiv);
 
     const printSection = document.querySelector('#print-here')
-    printSection.prepend(wholeSectionContainer);
-
-    // // for all attribute modal buttons
-    // var allModalBtns = document.getElementsByClassName('modalBtn');
-    // for (var m = 0; m < allModalBtns.length; m++) {
-    // allModalBtns[m].addEventListener("click", function() {
-    //     var container = this.parentNode.parentNode;
-    //     console.log(container.parentNode)
-    //     modalSection.style.display = "block";
-
-    //     applyBtn.dataset.containerId = container.id;
-    //     globalApplyParent = container.id;
-    //     console.log(globalApplyParent)
-    // })
-    // }
-
-    // image.addEventListener("click", () => {
-    //     modalSection.style.display = "block";
-    // });
-
-    // // Close modal button
-    // const closeModalBtn = document.querySelector("#closeModal");
-    // closeModalBtn.addEventListener("click", (event) => {
-    //     event.preventDefault();
-    //     modalSection.style.display = "none";
-    // });
-    
-    // const applyBtn = document.querySelector("#addAttributes")
-    // applyBtn.addEventListener("click", (event) => {
-    //     event.preventDefault();
-    //     let radioInput = document.querySelectorAll(`input[type='radio']`);
-    //     radioInput.checked = false;
-    //     getCheckedRadioValue(globalApplyParent)
-    // })
-
-    // imageRefresh.addEventListener("click", () => {
-    //     if (lbsInput.value >= 1) {
-    //         const printReps = document.createElement('p');
-    //         printReps.classList.add('savedSets');
-    //         printReps.textContent = (lbsInput.value + 'lbs x ' + repsInput.value);
-    //         // clears data to return placeholder
-    //         // repsInput.value = "";
-    //         // lbsInput.value = "";
-    //         printRepsDiv.appendChild(printReps)
-    //     } else {
-    //         const printReps = document.createElement('p');
-    //         printReps.classList.add('savedSets');
-    //         printReps.textContent = (repsInput.value);
-    //         // clears data to return placeholder
-    //         // repsInput.value = "";
-    //         // lbsInput.value = "";
-    //         printRepsDiv.appendChild(printReps);
-    // }
-
-    // })
+    printSection.appendChild(wholeSectionContainer);
 // end of generateExerciseContainer()
 }};
 
 function addItem() {
-    var input = document.querySelector("input");
+    var input = document.querySelector("input[type='text']");
     var addedExercise = input.value;
-    document.querySelector("#print-here").innerHTML += `<div class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${addedExercise}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+    console.log(addedExercise)
+    document.querySelector("#print-here").innerHTML += `<div class="everything"><div class="exerciseContainer" id="${addedExercise}"><div id="closeTogether"><img class="modalBtn" alt="addAttributes" src="./assets/images/+.png"><div class="text"><h2 id="mainTitle">${addedExercise}</h2></div></div><div class="setInput"><input class="input lbs" placeholder="lbs" type="number"><input class="input reps" placeholder="reps" type="number"><img class="icon" id="newSetBtn" alt="addNewSet" src="./assets/images/refresh.png"></div></div><div class="belowForReps"></div></div>`
     // clears value
     input.value = "";
     // adds placeholder
@@ -220,10 +167,11 @@ function addItem() {
 buildWorkout();
 
 allIncludedExercises.forEach((exercise) => {
+    console.log(exercise)
     const workout1 = new Workout(exercise);
     workout1.generateExerciseContainer();
 })
-const workout1 = new Workout('Bench Press');
-workout1.generateExerciseContainer();
+// const workout1 = new Workout('Bench Press');
+// workout1.generateExerciseContainer();
 
 addBtn.addEventListener('click', addItem);
