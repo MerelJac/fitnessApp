@@ -22,23 +22,16 @@ let allIncludedExercises = [];
 function buildWorkout() {
     // create main lifts list here
     for (var m = 0; m < mainLiftsLength; m++) {
-        var li = document.createElement("li");
-        li.innerText = JSON.stringify(mainLifts[m]);
         var pickRandomMain = mainLifts[Math.floor(Math.random() * mainLifts.length)];
         if (!includeMainWorkouts.includes(pickRandomMain)) {
             includeMainWorkouts.push(pickRandomMain)
         }
     };
 
-    // includeMainWorkouts.forEach(function (li) {
-    //     document.querySelector("#print-here").innerHTML += `<div class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`});
 
     // create workouts from EXERCISE list 
     for (var i = 0; i < workoutLength; i++) {
-        // // create a li in the printed section
-        // var li = document.createElement("li");
-        // // the HTML text is whatever the exercise[i] is
-        li.innerText = JSON.stringify(exercises[i]);
+
         // randomly selectes
         var pickRandom = exercises[Math.floor(Math.random() * exercises.length)];
         // won't print duplicates
@@ -48,16 +41,7 @@ function buildWorkout() {
 
     };
 
-    // includeWorkouts.forEach(function (li) {
-    //     document.querySelector("#print-here").innerHTML += `<div class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`})
-
-    // add cardio as part of the list
-    // var li = document.createElement("li");
     var pickRandomCardio = cardio[Math.floor(Math.random() * cardio.length)];
-    // console.log(pickRandomCardio)
-    // li.innerText = pickRandomCardio;
-    
-    // document.querySelector("#print-here").innerHTML += `<div class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${pickRandomCardio}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
 
     allIncludedExercises.push(...includeMainWorkouts);
     allIncludedExercises.push(...includeWorkouts);
@@ -148,6 +132,20 @@ class Workout {
 
     const printSection = document.querySelector('#print-here')
     printSection.appendChild(wholeSectionContainer);
+
+    imageRefresh.addEventListener("click", () => {
+        if (lbsInput.value >= 1) {
+            const printReps = document.createElement('p');
+            printReps.classList.add('savedSets');
+            printReps.textContent = (lbsInput.value + 'lbs x ' + repsInput.value);
+            printRepsDiv.appendChild(printReps)
+        } else {
+            const printReps = document.createElement('p');
+            printReps.classList.add('savedSets');
+            printReps.textContent = (repsInput.value);
+            printRepsDiv.appendChild(printReps);}
+
+    })
 // end of generateExerciseContainer()
 }};
 
