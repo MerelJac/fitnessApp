@@ -1,5 +1,7 @@
 const savedWorkout = JSON.parse(localStorage.getItem("workout"));
-const randomSavedWorkout = JSON.parse(localStorage.getItem('randomWorkout'));
+// const randomSavedWorkout = JSON.parse(localStorage.getItem('randomWorkout'));
+const randomSavedWorkout = JSON.parse(localStorage.getItem("randomWorkout"));
+
 
 
 
@@ -29,9 +31,9 @@ if (savedWorkout && randomSavedWorkout) {
     document.body.appendChild(printWorkout);
     var thisWorkout = document.createElement('h2');
     printWorkout.appendChild(thisWorkout);
-    thisWorkout.innerHTML += randomSavedWorkout[0];
-  for (var i = 0; i < randomSavedWorkout[1].length; i++) {
-    var exercise = randomSavedWorkout[1][i];
+    thisWorkout.innerHTML += 'insert date';
+  for (var i = 0; i < randomSavedWorkout.length; i++) {
+    var exercise = randomSavedWorkout[i].exerciseName;
     printWorkout.innerHTML += `<p class="savedTitle">${exercise}<p>`
   } 
 
@@ -57,9 +59,9 @@ if (savedWorkout && randomSavedWorkout) {
   document.body.appendChild(printWorkout);
   var thisWorkout = document.createElement('h2');
   printWorkout.appendChild(thisWorkout);
-  thisWorkout.innerHTML += randomSavedWorkout[0];
-for (var i = 0; i < randomSavedWorkout[1].length; i++) {
-  var exercise = randomSavedWorkout[1][i];
+  thisWorkout.innerHTML += 'insert date';
+for (var i = 0; i < randomSavedWorkout.length; i++) {
+  var exercise = randomSavedWorkout[i].exerciseName;
   printWorkout.innerHTML += `<p class="savedTitle">${exercise}<p>`
 } 
 } else {

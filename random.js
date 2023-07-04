@@ -7,6 +7,11 @@ var mainLifts = ['Chest Press', 'Incline Shoulder Press', 'Pull Up', 'Back Squat
 
 var cardio = ['Jog', 'Stairmaster', 'Powerwalk', 'Jump Rope', 'Burpees', 'Run', 'Bike']
 
+// for local storage
+var today = dayjs();
+var saveArray = [];
+
+// workout info for loops
 const workoutLength = 8;
 let includeWorkouts = [];
 const mainLiftsLength = 2
@@ -146,6 +151,26 @@ class Workout {
             printRepsDiv.appendChild(printReps);}
 
     })
+
+    const saveBtn = document.querySelector("#saveBtn");
+    saveBtn.addEventListener("click", () => {
+        // var thisAttribute = textDiv.querySelector('.attribute').textContent;
+        var thisName = textDiv.querySelector('#mainTitle').textContent;
+        var allSets = printRepsDiv.querySelectorAll(".savedSets");
+        var allSetInfo = [];
+        allSets.forEach(div => {
+            allSetInfo.push(div.textContent);
+        })
+        var exerciseName = thisName;
+        // var exerciseName = thisAttribute + ' ' + thisName;
+        var date = today.format('MMM D');
+        saveArray.push({exerciseName, date, allSetInfo});
+        console.log(exerciseName, allSetInfo);
+        localStorage.setItem("randomWorkout", JSON.stringify(saveArray));
+        window.location.href = "./saved.html"
+        console.log(JSON.parse(localStorage.getItem('randomWorkout')))
+        });
+
 // end of generateExerciseContainer()
 }};
 
@@ -169,7 +194,5 @@ allIncludedExercises.forEach((exercise) => {
     const workout1 = new Workout(exercise);
     workout1.generateExerciseContainer();
 })
-// const workout1 = new Workout('Bench Press');
-// workout1.generateExerciseContainer();
 
 addBtn.addEventListener('click', addItem);
