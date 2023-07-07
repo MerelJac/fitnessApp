@@ -1,8 +1,7 @@
 const savedWorkout = JSON.parse(localStorage.getItem("workout"));
 // const randomSavedWorkout = JSON.parse(localStorage.getItem('randomWorkout'));
 const randomSavedWorkout = JSON.parse(localStorage.getItem("randomWorkout"));
-
-
+const searchBtn = document.querySelector("#1RMSearch");
 
 
 var setInfoArray = [];
@@ -70,3 +69,4 @@ for (var i = 0; i < randomSavedWorkout.length; i++) {
   document.body.appendChild(printWorkout); // Append the div to the document body 
   printWorkout.innerHTML += `<p>None Saved.</p>`
 };
+

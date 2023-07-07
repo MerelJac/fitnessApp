@@ -140,8 +140,36 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     wholeSectionContainer.appendChild(exerciseContainer);
     wholeSectionContainer.appendChild(printRepsDiv);
 
-
     printSection.prepend(wholeSectionContainer);
+
+    let true1RM = 0;
+    let maxRepsBW = 0;
+    imageRefresh.addEventListener("click", () => {
+        if (lbsInput.value >= 1) {
+            const printReps = document.createElement('p');
+            printReps.classList.add('savedSets');
+            let w = lbsInput.value;
+            let r = repsInput.value;
+            printReps.textContent = (w + 'lbs x ' + r);
+            printRepsDiv.appendChild(printReps);
+            let test1RM = w / (1.0278 - (0.0278 * r));
+            if (test1RM > true1RM) {
+                true1RM = test1RM;
+            };
+
+
+        } else {
+            const printReps = document.createElement('p');
+            printReps.classList.add('savedSets');
+            printReps.textContent = (repsInput.value);
+            printRepsDiv.appendChild(printReps);
+            // makes repsInput a number not a string
+            let testMaxRepsBW = parseInt(repsInput.value, 10);
+            if (testMaxRepsBW > maxRepsBW) {
+                maxRepsBW = testMaxRepsBW;
+            };
+    } 
+    })
 
     const saveBtn = document.querySelector("#saveBtn");
     saveBtn.addEventListener("click", () => {
@@ -156,6 +184,9 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
         var date = today.format('MMM D');
         saveArray.push({exerciseName, date, allSetInfo});
         console.log(exerciseName, allSetInfo);
+        let oneRMRounded =  Math.floor(true1RM);
+        let maxBWrepsRounded = Math.floor(maxRepsBW);
+        localStorage.setItem(exerciseName, oneRMRounded || maxBWrepsRounded);
         localStorage.setItem("workout", JSON.stringify(saveArray));
         window.location.href = "./saved.html"
         });
@@ -192,27 +223,6 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
         let radioInput = document.querySelectorAll(`input[type='radio']`);
         radioInput.checked = false;
         getCheckedRadioValue(globalApplyParent)
-    })
-
-    imageRefresh.addEventListener("click", () => {
-        if (lbsInput.value >= 1) {
-            const printReps = document.createElement('p');
-            printReps.classList.add('savedSets');
-            printReps.textContent = (lbsInput.value + 'lbs x ' + repsInput.value);
-            // clears data to return placeholder
-            // repsInput.value = "";
-            // lbsInput.value = "";
-            printRepsDiv.appendChild(printReps)
-        } else {
-            const printReps = document.createElement('p');
-            printReps.classList.add('savedSets');
-            printReps.textContent = (repsInput.value);
-            // clears data to return placeholder
-            // repsInput.value = "";
-            // lbsInput.value = "";
-            printRepsDiv.appendChild(printReps);
-    }
-
     })
 
 
