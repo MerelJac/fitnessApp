@@ -181,6 +181,7 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
             allSetInfo.push(div.textContent);
         })
         var exerciseName = thisAttribute + ' ' + thisName;
+        console.log(exerciseName)
         var date = today.format('MMM D');
         saveArray.push({exerciseName, date, allSetInfo});
         console.log(exerciseName, allSetInfo);

@@ -1,7 +1,22 @@
 const savedWorkout = JSON.parse(localStorage.getItem("workout"));
 // const randomSavedWorkout = JSON.parse(localStorage.getItem('randomWorkout'));
 const randomSavedWorkout = JSON.parse(localStorage.getItem("randomWorkout"));
-const searchBtn = document.querySelector("#1RMSearch");
+const searchBtn = document.querySelector("#oneRMSearch");
+const searchQuery = document.querySelector("#searchBox");
+
+
+searchBtn.addEventListener("click", () => {
+  var searchWord = searchQuery.value;
+  var splitPhrase = searchWord.split(' ');
+  var capializedWords = [];
+  splitPhrase.forEach(function(word) {
+          var capitalize = word.charAt(0).toUpperCase() + word.slice(1);
+          capializedWords.push(capitalize);
+      });
+  let newSearchWord = capializedWords.join(" ")
+  let localStorageSearch = JSON.parse(localStorage.getItem(newSearchWord || (" "+ newSearchWord)))
+  console.log(localStorageSearch)
+})
 
 
 var setInfoArray = [];
