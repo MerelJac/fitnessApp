@@ -309,3 +309,11 @@ a {
     flex-direction: row;
     justify-content: space-between;
 }
+
+#searchFor1RM {
+    display: flex;
+}
+
+#oneRepMaxPrinted {
+    color: #E4E4E6;
+}

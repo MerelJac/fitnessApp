@@ -181,8 +181,11 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
             allSetInfo.push(div.textContent);
         })
         var exerciseName = thisAttribute + ' ' + thisName;
+        if (exerciseName.charAt(0) === " ") {
+            exerciseName = exerciseName.slice(1);
+          }
         console.log(exerciseName)
-        var date = today.format('MMM D');
+        const date = today.format('MMM D');
         saveArray.push({exerciseName, date, allSetInfo});
         console.log(exerciseName, allSetInfo);
         let oneRMRounded =  Math.floor(true1RM);

@@ -4,8 +4,11 @@ const randomSavedWorkout = JSON.parse(localStorage.getItem("randomWorkout"));
 const searchBtn = document.querySelector("#oneRMSearch");
 const searchQuery = document.querySelector("#searchBox");
 
-
-searchBtn.addEventListener("click", () => {
+const p = document.createElement('p');
+searchBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  p.id = "oneRepMaxPrinted";
+  p.textContent = " ";
   var searchWord = searchQuery.value;
   var splitPhrase = searchWord.split(' ');
   var capializedWords = [];
@@ -14,8 +17,14 @@ searchBtn.addEventListener("click", () => {
           capializedWords.push(capitalize);
       });
   let newSearchWord = capializedWords.join(" ")
-  let localStorageSearch = JSON.parse(localStorage.getItem(newSearchWord || (" "+ newSearchWord)))
-  console.log(localStorageSearch)
+  let localStorageSearch = JSON.parse(localStorage.getItem(newSearchWord));
+  searchQuery.value = "";
+  searchQuery.placeholder = "Exercise for 1 Rep Max";
+  if (localStorageSearch == null) {
+    p.textContent = "You haven't hit that lift yet!";
+  } else {p.textContent = `${newSearchWord} 1RM = ${localStorageSearch}`};
+  const searchFor1RM = document.querySelector("#searchFor1RM");
+  searchFor1RM.insertAdjacentElement("afterend", p);
 })
 
 
@@ -81,7 +90,7 @@ for (var i = 0; i < randomSavedWorkout.length; i++) {
 } else {
   var printWorkout = document.createElement('div');
   printWorkout.classList.add('printedWorkout');
-  document.body.appendChild(printWorkout); // Append the div to the document body 
-  printWorkout.innerHTML += `<p>None Saved.</p>`
+  document.body.prepend(printWorkout); // Append the div to the document body 
+  printWorkout.innerHTML += `<p>No Workouts Saved.</p>`
 };
 
