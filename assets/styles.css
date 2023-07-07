@@ -317,3 +317,9 @@ a {
 #oneRepMaxPrinted {
     color: #E4E4E6;
 }
+
+#oneRMSearch {
+    background-color: #CBCAD0;;
+    border: 1px solid #444152;
+    font-size: 10px;
+}
