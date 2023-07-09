@@ -3,6 +3,7 @@ const savedWorkout = JSON.parse(localStorage.getItem("workout"));
 const randomSavedWorkout = JSON.parse(localStorage.getItem("randomWorkout"));
 const searchBtn = document.querySelector("#oneRMSearch");
 const searchQuery = document.querySelector("#searchBox");
+const searchBox = document.querySelector("#printSection");
 
 const p = document.createElement('p');
 searchBtn.addEventListener("click", (event) => {
@@ -22,7 +23,7 @@ searchBtn.addEventListener("click", (event) => {
   searchQuery.placeholder = "Exercise for 1 Rep Max";
   if (localStorageSearch == null) {
     p.textContent = "You haven't hit that lift yet!";
-  } else {p.textContent = `${newSearchWord} 1RM = ${localStorageSearch}`};
+  } else {p.textContent = `${newSearchWord} 1RM = ${localStorageSearch}lbs. Suggested 10reps at ${Math.floor(localStorageSearch * (1.0278 - (0.0278 * 10)))}lbs, 6 reps at ${Math.floor(localStorageSearch * (1.0278 - (0.0278 * 6)))}lbs`};
   const searchFor1RM = document.querySelector("#searchFor1RM");
   searchFor1RM.insertAdjacentElement("afterend", p);
 })
@@ -35,7 +36,7 @@ if (savedWorkout && randomSavedWorkout) {
   // saved workout
   var printWorkout = document.createElement('div');
     printWorkout.classList.add('printedWorkout');
-    document.body.appendChild(printWorkout);
+    searchBox.append(printWorkout);
     var thisWorkout = document.createElement('h2');
     printWorkout.appendChild(thisWorkout);
     thisWorkout.innerHTML += savedWorkout[0].date;
@@ -51,7 +52,7 @@ if (savedWorkout && randomSavedWorkout) {
     // random saved
     var printWorkout = document.createElement('div');
     printWorkout.classList.add('printedWorkout');
-    document.body.appendChild(printWorkout);
+    searchBox.append(printWorkout);
     var thisWorkout = document.createElement('h2');
     printWorkout.appendChild(thisWorkout);
     thisWorkout.innerHTML += 'insert date';
@@ -63,7 +64,7 @@ if (savedWorkout && randomSavedWorkout) {
 } else if (savedWorkout) {
     var printWorkout = document.createElement('div');
     printWorkout.classList.add('printedWorkout');
-    document.body.appendChild(printWorkout);
+    searchBox.append(printWorkout);
     var thisWorkout = document.createElement('h2');
     printWorkout.appendChild(thisWorkout);
     thisWorkout.innerHTML += savedWorkout[0].date;

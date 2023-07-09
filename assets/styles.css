@@ -41,7 +41,7 @@ h2 {
 }
 
 .input {
-    width: 41px;
+    width: 55px;
     height: 20px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -52,7 +52,8 @@ h2 {
 
 footer {
     width: 100%;
-    margin-bottom: 30px
+    margin-bottom: 30px;
+    padding-top: 10px;
 }
 
 .attribute {
@@ -77,6 +78,9 @@ footer {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+#randomlyGenSavedPg{
+    margin-right: 5px;
+}
 .popupOptions {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
@@ -151,7 +155,7 @@ footer {
 input[type=text] {
     padding: 10px;
     width: 100%;
-    margin-right: 10px;
+    margin-right: 5px;
     background-color: #CBCAD0;
     border: 1px solid #444152;
 }
@@ -160,18 +164,19 @@ input[type=text] {
     background-color: #CBCAD0;;
     border: 1px solid #444152;
     font-size: 10px;
+    width: 75px;
 
 }
 
 button {
     border: #fefefe;
+    padding: 10px;
 }
 
 footer, button {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 10px;
 }
 
 #closeModal {
@@ -200,13 +205,25 @@ a {
     width: 100%;
 }
 
-#createNew {
-    background-color: #8E8AA5;
-}
 
 #seeSaved, #homeBtn {
     background-color: #CBCAD0;
 }
+
+#createNewSavedPg {
+    margin-right: 5px;
+    background-color: #8E8AA5;
+}
+
+#createNew {
+    background-color: #8E8AA5;
+
+}
+
+#homeBtn {
+    margin-right: 5px;
+}
+
 
 #randomlyGen, #saveBtn {
     background-color: #E4E4E6;
@@ -227,7 +244,6 @@ a {
     background-color: #8E8AA5;
     line-height: 1;
     padding: 10px;
-    margin: 5px;
     margin-top: 10px;
 }
 
@@ -312,6 +328,7 @@ a {
 
 #searchFor1RM {
     display: flex;
+    margin-top: 5px;
 }
 
 #oneRepMaxPrinted {
@@ -322,4 +339,44 @@ a {
     background-color: #CBCAD0;;
     border: 1px solid #444152;
     font-size: 10px;
+    width: 75px;
+}
+
+#name, #instructions {
+    color: #E4E4E6;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: row;
+}
+
+#homeBtnSavedPg {
+    margin-right: 5px;
+}
+
+@media screen and (min-width: 768px) {
+    #oneRMSearch, #searchSubmit, #add-button {
+        width: 300px;
+    }
+
+    .navBtn {
+        padding: 20px;
+        font-size: 30px;
+    }
+    #mainTitle, #name  {
+        font-size: 30px;
+    }
+
+    #instructions {
+        font-size: 20px;
+    }
+
+    .input {
+        width: 100px;
+    }
+
+    input[type=text] {
+        padding: 30px;
+    }
 }

@@ -6,7 +6,7 @@ const printSection = document.querySelector("#printSection");
 const exerciseContainer = document.querySelector(".exerciseContainer");
 
 // update as needed 
-var allAttributesArray = ['Incline', 'Decline', 'Barbell', 'Dumbbell', 'Stability Ball', 'Neutral Grip', 'Close Grip', 'Wide Grip', 'BOSU' ];
+var allAttributesArray = ['Incline', 'Decline', 'Barbell', 'Dumbbell', 'Stability Ball', 'Neutral Grip', 'Close Grip', 'Wide Grip', 'BOSU', 'Rear Foot Elevated', 'Weighted', 'Half Kneel', 'Single Arm', 'Single Leg' ];
 var resultsArray = [];
 
 var globalApplyParent;
@@ -28,6 +28,7 @@ searchSubmitBtn.addEventListener("click", () => {
     let phrase = capializedWords;
 
     for (var w = phrase.length - 1; w >= 0; w--) {
+        console.log(phrase[w]);
         if (allAttributesArray.includes(phrase[w])) {
             resultsArray.push(phrase[w]);
             phrase.splice(w, 1);
@@ -116,8 +117,6 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     lbsInput.placeholder = 'lbs'
     lbsInput.type = 'number';
 
-    // const newSetBtn = document.createElement('button');
-    // newSetBtn.id = 'newSetBtn';
     const imageRefresh = document.createElement('img');
     imageRefresh.classList.add('icon');
     imageRefresh.id = 'newSetBtn';
@@ -228,10 +227,33 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
         radioInput.checked = false;
         getCheckedRadioValue(globalApplyParent)
     })
-
-
 // end of generateExerciseContainer()
 };
 
+const searchBtn = document.querySelector("#oneRMSearch");
+const search1RMQuery = document.querySelector("#searchBox");
+const searchBox = document.querySelector("#printSection");
 
+const p = document.createElement('p');
+searchBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  p.id = "oneRepMaxPrinted";
+  p.textContent = " ";
+  var searchWord = search1RMQuery.value;
+  var splitPhrase = searchWord.split(' ');
+  var capializedWords = [];
+  splitPhrase.forEach(function(word) {
+          var capitalize = word.charAt(0).toUpperCase() + word.slice(1);
+          capializedWords.push(capitalize);
+      });
+  let newSearchWord = capializedWords.join(" ")
+  let localStorageSearch = JSON.parse(localStorage.getItem(newSearchWord));
+  search1RMQuery.value = "";
+  search1RMQuery.placeholder = "Exercise for 1 Rep Max";
+  if (localStorageSearch == null) {
+    p.textContent = "You haven't hit that lift yet!";
+  } else {p.textContent = `${newSearchWord} 1RM = ${localStorageSearch}lbs. Suggested 10reps at ${Math.floor(localStorageSearch * (1.0278 - (0.0278 * 10)))}lbs, 6 reps at ${Math.floor(localStorageSearch * (1.0278 - (0.0278 * 6)))}lbs`};
+  const searchFor1RM = document.querySelector("#searchFor1RM");
+  searchFor1RM.insertAdjacentElement("afterend", p);
+})
 
