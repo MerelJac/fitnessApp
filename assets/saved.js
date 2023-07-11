@@ -1,5 +1,4 @@
 const savedWorkout = JSON.parse(localStorage.getItem("workout"));
-// const randomSavedWorkout = JSON.parse(localStorage.getItem('randomWorkout'));
 const randomSavedWorkout = JSON.parse(localStorage.getItem("randomWorkout"));
 const searchBtn = document.querySelector("#oneRMSearch");
 const searchQuery = document.querySelector("#searchBox");
@@ -55,7 +54,7 @@ if (savedWorkout && randomSavedWorkout) {
     searchBox.append(printWorkout);
     var thisWorkout = document.createElement('h2');
     printWorkout.appendChild(thisWorkout);
-    thisWorkout.innerHTML += 'insert date';
+    thisWorkout.innerHTML += savedWorkout[0].date;
   for (var i = 0; i < randomSavedWorkout.length; i++) {
     var exercise = randomSavedWorkout[i].exerciseName;
     printWorkout.innerHTML += `<p class="savedTitle">${exercise}<p>`
@@ -83,7 +82,7 @@ if (savedWorkout && randomSavedWorkout) {
   document.body.appendChild(printWorkout);
   var thisWorkout = document.createElement('h2');
   printWorkout.appendChild(thisWorkout);
-  thisWorkout.innerHTML += 'insert date';
+  thisWorkout.innerHTML += randomSavedWorkout[0].date;
 for (var i = 0; i < randomSavedWorkout.length; i++) {
   var exercise = randomSavedWorkout[i].exerciseName;
   printWorkout.innerHTML += `<p class="savedTitle">${exercise}<p>`

@@ -174,13 +174,11 @@ class Workout {
             allSetInfo.push(div.textContent);
         })
         var exerciseName = thisName;
-        // var exerciseName = thisAttribute + ' ' + thisName;
+        var exerciseName = thisAttribute + ' ' + thisName;
         var date = today.format('MMM D');
         saveArray.push({exerciseName, date, allSetInfo});
-        console.log(exerciseName, allSetInfo);
         localStorage.setItem("randomWorkout", JSON.stringify(saveArray));
         window.location.href = "./saved.html"
-        console.log(JSON.parse(localStorage.getItem('randomWorkout')))
         });
 
     var allModalBtns = document.getElementsByClassName('modalBtn');
