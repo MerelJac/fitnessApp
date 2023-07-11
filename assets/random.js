@@ -165,8 +165,9 @@ class Workout {
 
 
     const saveBtn = document.querySelector("#saveBtn");
-    saveBtn.addEventListener("click", () => {
-        // var thisAttribute = textDiv.querySelector('.attribute').textContent;
+    saveBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        var thisAttribute = textDiv.querySelector('.attribute').textContent;
         var thisName = textDiv.querySelector('#mainTitle').textContent;
         var allSets = printRepsDiv.querySelectorAll(".savedSets");
         var allSetInfo = [];
@@ -256,7 +257,6 @@ function addItem() {
         globalApplyParent = container.id;
         console.log(globalApplyParent)
     })
-    
 
         // Close modal button
         const closeModalBtn = document.querySelector("#closeModal");
