@@ -13,7 +13,7 @@
  In upcoming versions, the user will be able to edit past workout information and store more than one workout at a time. The implementaion of remote databases will advance the scope of this application greatly. Ideally, the application will store information for each exercise to help predict percent of one rep maxes to enable a stronger athlete.
 
  ## Video Tutorial
- [Watch]()
+ [Watch](https://drive.google.com/file/d/1RWeCh3zzZXP472Lq2d843py4OwK7tcDZ/view)
  
  ## Link to Deployed Application 
 https://mereljac.github.io/fitnessApp/
