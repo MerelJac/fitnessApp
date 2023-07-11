@@ -95,3 +95,15 @@ for (var i = 0; i < randomSavedWorkout.length; i++) {
   printWorkout.innerHTML += `<p>No Workouts Saved.</p>`
 };
 
+const homeBtn = document.querySelector('#homeBtnSavedPg').addEventListener('click', () => {
+  window.location.href = './index.html';
+})
+
+const randomGenBtnSavedPg = document.querySelector('#randomlyGenSavedPg').addEventListener('click', () => {
+  window.location.href = './random.html';
+})
+
+const createNewBtn = document.querySelector('#createNewSavedPg').addEventListener('click', () => {
+  window.location.href = './create.html';
+})
+

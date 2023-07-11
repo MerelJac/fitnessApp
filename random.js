@@ -283,4 +283,13 @@ allIncludedExercises.forEach((exercise) => {
     workout1.generateExerciseContainer();
 })
 
+const homtBtn = document.querySelector('#homeBtn').addEventListener('click', () => {
+    window.location.href = './index.html'
+})
+
+const saveBtnHome = document.querySelector('#saveBtn').addEventListener('click', () => {
+    window.location.href = './saved.html'
+})
+
+
 addBtn.addEventListener('click', addItem);

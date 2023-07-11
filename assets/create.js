@@ -76,14 +76,10 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     const closeTogetherDiv = document.createElement('div');
     closeTogetherDiv.id = 'closeTogether';
 
-    // const modalBtn = document.createElement('button');
-    // modalBtn.classList.add('modalBtn');
-
     const image = document.createElement('img');
     image.classList.add('modalBtn');
     image.alt = 'addAttributes';
     image.src = './assets/images/+.png';
-    // modalBtn.appendChild(image);
 
     closeTogetherDiv.appendChild(image);
 
@@ -123,7 +119,6 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
     imageRefresh.id = 'newSetBtn';
     imageRefresh.alt = 'addNewSet';
     imageRefresh.src = './assets/images/refresh.png';
-
 
     setInputDiv.appendChild(lbsInput);
     setInputDiv.appendChild(repsInput);
@@ -231,6 +226,14 @@ function generateExerciseContainer(newSearchWord, attributesToPass) {
 // end of generateExerciseContainer()
 };
 
+const homeBtn = document.querySelector('#homeBtn').addEventListener('click', () => {
+    window.location.href = './index.html'
+})
+
+
+const randomeGenBtn = document.querySelector('#randomlyGen').addEventListener('click', () => {
+    window.location.href = './random.html'
+})
 const searchBtn = document.querySelector("#oneRMSearch");
 const search1RMQuery = document.querySelector("#searchBox");
 const searchBox = document.querySelector("#printSection");
