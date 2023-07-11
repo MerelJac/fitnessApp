@@ -187,6 +187,7 @@ class Workout {
     for (var m = 0; m < allModalBtns.length; m++) {
     allModalBtns[m].addEventListener("click", function() {
         var container = this.parentNode.parentNode;
+        attributeArray = [];
         modalSection.style.display = "block";
         const applyBtn = document.querySelector('#addAttributes')
         applyBtn.dataset.containerId = container.id;
@@ -240,11 +241,39 @@ function addItem() {
     var input = document.querySelector("input[type='text']");
     var addedExercise = input.value;
     console.log(addedExercise)
-    document.querySelector("#print-here").innerHTML += `<div class="everything"><div class="exerciseContainer" id="${addedExercise}"><div id="closeTogether"><img class="modalBtn" alt="addAttributes" src="./assets/images/+.png"><div class="text"><h2 id="mainTitle">${addedExercise}</h2></div></div><div class="setInput"><input class="input lbs" placeholder="lbs" type="number"><input class="input reps" placeholder="reps" type="number"><img class="icon" id="newSetBtn" alt="addNewSet" src="./assets/images/refresh.png"></div></div><div class="belowForReps"></div></div>`
+    document.querySelector("#print-here").innerHTML += `<div class="everything"><div class="exerciseContainer" id="${addedExercise}"><div id="closeTogether"><img class="modalBtn" alt="addAttributes" src="./assets/images/+.png"><div class="text"><p class="attribute"></p><h2 id="mainTitle">${addedExercise}</h2></div></div><div class="setInput"><input class="input lbs" placeholder="lbs" type="number"><input class="input reps" placeholder="reps" type="number"><img class="icon" id="newSetBtn" alt="addNewSet" src="./assets/images/refresh.png"></div></div><div class="belowForReps"></div></div>`
     // clears value
     input.value = "";
     // adds placeholder
     input.placeholder = "Add next";
+    // provide inner div functions
+    var modalAdded = document.getElementsByClassName('modalBtn');
+
+    modalAdded.addEventListener("click", function() {
+        var container = this.parentNode.parentNode;
+        attributeArray = [];
+        modalSection.style.display = "block";
+        const applyBtn = document.querySelector('#addAttributes')
+        applyBtn.dataset.containerId = container.id;
+        globalApplyParent = container.id;
+        console.log(globalApplyParent)
+    })
+    
+
+        // Close modal button
+        const closeModalBtn = document.querySelector("#closeModal");
+        closeModalBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            modalSection.style.display = "none";
+        });
+        
+        const applyBtn = document.querySelector("#addAttributes")
+        applyBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            console.log(globalApplyParent)
+            let radioInput = document.querySelectorAll(`input[type='radio']`);
+            getCheckedRadioValue(globalApplyParent)
+        })
 }
 
 buildWorkout();
