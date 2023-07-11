@@ -231,9 +231,6 @@ const homeBtn = document.querySelector('#homeBtn').addEventListener('click', () 
 })
 
 
-const randomeGenBtn = document.querySelector('#randomlyGen').addEventListener('click', () => {
-    window.location.href = './random.html'
-})
 const searchBtn = document.querySelector("#oneRMSearch");
 const search1RMQuery = document.querySelector("#searchBox");
 const searchBox = document.querySelector("#printSection");

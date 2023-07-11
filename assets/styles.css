@@ -360,6 +360,12 @@ a {
         width: 300px;
     }
 
+    #add-button {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
     .navBtn {
         padding: 20px;
         font-size: 30px;
