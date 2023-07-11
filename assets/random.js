@@ -2,9 +2,9 @@ const addBtn = document.querySelector("#add-button");
 const workoutName = document.querySelector("#name");
 const modalSection = document.querySelector(".modalContent");
 
-const exercises = ['Push-Ups', 'Sit Ups', 'Plank', 'Rear Foot Elevated Split Squats', 'Calf Raises', 'Bicep Curls', 'Single Leg Deadlifts', 'Fire Hydrants', 'Donkey Kicks', 'Tricep Extensions', 'Hip Bridges', 'Pistol Squats'];
+const exercises = ['Push-Ups', 'Sit Ups', 'Plank', 'Rear Foot Elevated Split Squats', 'Calf Raises', 'Bicep Curls', 'Single Leg Deadlifts', 'Fire Hydrants', 'Donkey Kicks', 'Tricep Extensions', 'Hip Bridges', 'Pistol Squats', 'Sumo Squats', 'Low Rows', 'High Rows', 'Straigh Arm Lat Pulls', 'Pec Fly' ];
 
-const mainLifts = ['Chest Press', 'Incline Shoulder Press', 'Pull Up', 'Back Squats', 'Front Squats', 'Deadlifts', 'Hip Thrusts'];
+const mainLifts = ['Chest Press', 'Incline Shoulder Press', 'Pull Up', 'Back Squats', 'Front Squats', 'Deadlifts', 'Hip Thrusts', 'Rows'];
 
 const cardio = ['Jog', 'Stairmaster', 'Powerwalk', 'Jump Rope', 'Burpees', 'Run', 'Bike']
 
@@ -290,6 +290,8 @@ const homtBtn = document.querySelector('#homeBtn').addEventListener('click', () 
 const saveBtnHome = document.querySelector('#saveBtn').addEventListener('click', () => {
     window.location.href = './saved.html'
 })
+
+
 
 
 addBtn.addEventListener('click', addItem);
