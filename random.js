@@ -1,15 +1,18 @@
-var addBtn = document.querySelector("#add-button");
-var workoutName = document.querySelector("#name");
+const addBtn = document.querySelector("#add-button");
+const workoutName = document.querySelector("#name");
+const modalSection = document.querySelector(".modalContent");
 
-var exercises = ['Push-Ups', 'Sit Ups', 'Plank', 'Rear Foot Elevated Split Squats', 'Calf Raises', 'Bicep Curls', 'Single Leg Deadlifts', 'Fire Hydrants', 'Donkey Kicks', 'Tricep Extensions', 'Hip Bridges', 'Pistol Squats'];
+const exercises = ['Push-Ups', 'Sit Ups', 'Plank', 'Rear Foot Elevated Split Squats', 'Calf Raises', 'Bicep Curls', 'Single Leg Deadlifts', 'Fire Hydrants', 'Donkey Kicks', 'Tricep Extensions', 'Hip Bridges', 'Pistol Squats'];
 
-var mainLifts = ['Chest Press', 'Incline Shoulder Press', 'Pull Up', 'Back Squats', 'Front Squats', 'Deadlifts', 'Hip Thrusts'];
+const mainLifts = ['Chest Press', 'Incline Shoulder Press', 'Pull Up', 'Back Squats', 'Front Squats', 'Deadlifts', 'Hip Thrusts'];
 
-var cardio = ['Jog', 'Stairmaster', 'Powerwalk', 'Jump Rope', 'Burpees', 'Run', 'Bike']
+const cardio = ['Jog', 'Stairmaster', 'Powerwalk', 'Jump Rope', 'Burpees', 'Run', 'Bike']
 
 // for local storage
-var today = dayjs();
-var saveArray = [];
+const today = dayjs();
+let saveArray = [];
+// update as needed 
+let allAttributesArray = ['Incline', 'Decline', 'Barbell', 'Dumbbell', 'Stability Ball', 'Neutral Grip', 'Close Grip', 'Wide Grip', 'BOSU', 'Rear Foot Elevated', 'Weighted', 'Half Kneel', 'Single Arm', 'Single Leg' ];
 
 // workout info for loops
 const workoutLength = 8;
@@ -19,6 +22,8 @@ let includeMainWorkouts = []
 const cardioLength = 1;
 let allIncludedExercises = [];
 
+// global variable
+var globalApplyParent;
 
 // needs script to work 
 // var today = dayjs();
@@ -32,6 +37,17 @@ function buildWorkout() {
             includeMainWorkouts.push(pickRandomMain)
         }
     };
+
+    for (var p = 0; p < includeMainWorkouts; i++) {
+        console.log(phrase[p]);
+        let resultsArray = [];
+        if (allAttributesArray.includes(phrase[p])) {
+            resultsArray.push(phrase[p]);
+            phrase.splice(p, 1);
+        }
+        var newSearchWord = phrase.join(' ');
+
+    }
 
 
     // create workouts from EXERCISE list 
@@ -51,7 +67,6 @@ function buildWorkout() {
     allIncludedExercises.push(...includeMainWorkouts);
     allIncludedExercises.push(...includeWorkouts);
     allIncludedExercises.push(pickRandomCardio);
-    console.log(allIncludedExercises)
 
 }
 
@@ -69,30 +84,29 @@ class Workout {
     const closeTogetherDiv = document.createElement('div');
     closeTogetherDiv.id = 'closeTogether';
 
-    // const modalBtn = document.createElement('button');
-    // modalBtn.classList.add('modalBtn');
+    const modalBtn = document.createElement('button');
+    modalBtn.classList.add('modalBtn');
 
     const image = document.createElement('img');
     image.classList.add('modalBtn');
     image.alt = 'addAttributes';
     image.src = './assets/images/+.png';
-    // modalBtn.appendChild(image);
+    modalBtn.appendChild(image);
 
     closeTogetherDiv.appendChild(image);
 
     const textDiv = document.createElement('div');
     textDiv.classList.add('text');
 
-    // const attributeP = document.createElement('p');
-    // attributeP.classList.add('attribute');
-    // attributeP.id = 'hidden';
-    // attributeP.textContent = attributesToPass || '';
+    const attributeP = document.createElement('p');
+    attributeP.classList.add('attribute');
+    attributeP.textContent = '';
 
     const titleH2 = document.createElement('h2');
     titleH2.id = 'mainTitle';
     titleH2.textContent = this.main;
 
-    // textDiv.appendChild(attributeP);
+    textDiv.appendChild(attributeP);
     textDiv.appendChild(titleH2);
 
     closeTogetherDiv.appendChild(textDiv);
@@ -111,14 +125,11 @@ class Workout {
     lbsInput.placeholder = 'lbs'
     lbsInput.type = 'number';
 
-    // const newSetBtn = document.createElement('button');
-    // newSetBtn.id = 'newSetBtn';
     const imageRefresh = document.createElement('img');
     imageRefresh.classList.add('icon');
     imageRefresh.id = 'newSetBtn';
     imageRefresh.alt = 'addNewSet';
     imageRefresh.src = './assets/images/refresh.png';
-
 
     setInputDiv.appendChild(lbsInput);
     setInputDiv.appendChild(repsInput);
@@ -152,6 +163,7 @@ class Workout {
 
     })
 
+
     const saveBtn = document.querySelector("#saveBtn");
     saveBtn.addEventListener("click", () => {
         // var thisAttribute = textDiv.querySelector('.attribute').textContent;
@@ -171,8 +183,58 @@ class Workout {
         console.log(JSON.parse(localStorage.getItem('randomWorkout')))
         });
 
+    var allModalBtns = document.getElementsByClassName('modalBtn');
+    for (var m = 0; m < allModalBtns.length; m++) {
+    allModalBtns[m].addEventListener("click", function() {
+        var container = this.parentNode.parentNode;
+        modalSection.style.display = "block";
+        const applyBtn = document.querySelector('#addAttributes')
+        applyBtn.dataset.containerId = container.id;
+        globalApplyParent = container.id;
+        console.log(globalApplyParent)
+    })
+    }
+
+        // Close modal button
+        const closeModalBtn = document.querySelector("#closeModal");
+        closeModalBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            modalSection.style.display = "none";
+        });
+        
+        const applyBtn = document.querySelector("#addAttributes")
+        applyBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            console.log(globalApplyParent)
+            let radioInput = document.querySelectorAll(`input[type='radio']`);
+            getCheckedRadioValue(globalApplyParent)
+        })
 // end of generateExerciseContainer()
 }};
+
+let attributeArray = [];
+function getCheckedRadioValue(globalApplyParent) {
+    let radioInput = document.querySelectorAll(`input[type='radio']`);    
+    for (let r = 0; r < radioInput.length; r++) {
+        if (radioInput[r].checked && !attributeArray.includes(radioInput[r].value)) {
+            const labelElement = document.querySelector(`label[for="${radioInput[r].id}"]`);
+            const labelText = labelElement.textContent;
+            attributeArray.push(labelText);
+            radioInput[r].checked = false;
+        }
+    }
+
+    modalSection.style.display = "none";
+
+    var containerP = document.getElementById(globalApplyParent);
+    console.log(containerP);
+    var p = containerP.querySelector(".attribute");
+    p.style.display = "flex";
+    p.textContent = attributeArray.join(', ');
+    console.log(attributeArray);
+    console.log(p.textContent);
+
+}
 
 function addItem() {
     var input = document.querySelector("input[type='text']");
@@ -185,12 +247,9 @@ function addItem() {
     input.placeholder = "Add next";
 }
 
-
-
 buildWorkout();
 
 allIncludedExercises.forEach((exercise) => {
-    console.log(exercise)
     const workout1 = new Workout(exercise);
     workout1.generateExerciseContainer();
 })

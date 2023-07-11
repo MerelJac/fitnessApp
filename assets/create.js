@@ -58,7 +58,8 @@ function getCheckedRadioValue(globalApplyParent) {
 
     var containerP = document.getElementById(globalApplyParent);
     console.log(containerP);
-    var p = containerP.querySelector(".attribute")
+    var p = containerP.querySelector(".attribute");
+    p.style.display = "flex";
     p.textContent = attributeArray.join(', ');
     console.log(attributeArray);
     console.log(p.textContent);
