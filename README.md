@@ -1,5 +1,5 @@
-# Workout Tracker
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Workout Tracker [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+Dynamically track your workouts and efficiently record your progress.
 
  ## Description 
  This application allows the user to log workouts easily and efficently with exercise customization and set tracking. This application is designed for athletes who want to keep track of their workouts in real time but are tired of the tediousness of searching for the correct exercise and entering in set information. 
