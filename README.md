@@ -1,4 +1,5 @@
 # Workout Tracker
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
  ## Description 
  This application allows the user to log workouts easily and efficently with exercise customization and set tracking. This application is designed for athletes who want to keep track of their workouts in real time but are tired of the tediousness of searching for the correct exercise and entering in set information. 
@@ -7,10 +8,26 @@
 
  When the user clicks save, they are presented with a workout summary that is saved to local storage. 
 
- If the user is unsure what workout to do, they can select to randomly generate a workout from the main page. The user is then presented with 8 exercises depening on their choice of a full body, upper body, or lower body workout. Since the user did not customize these exercises, they are presented with a gif example of the exercise and information about targeted muscle groups and necessary equiptment. 
+ If the user is unsure what workout to do, they can select to randomly generate a workout from the main page. The user is presented with a random workout formatted with main lifts, accessory exercises, and a cardio option. Formatted similarly to the customizeable workouts, users can log weights and reps and save the data to local storage. 
 
- ## Future Develpments 
- In upcoming versions, the user will be able to edit past workout information and store more than one workout at a time. The implementaion of remote databases will advance the scope of this application greatly. Ideally, the application will store information for each exercise to help predict percent of one rep maxes to enable a stronger athlete.
+## Installation
+Download the zip file from GitHub and import to your preferred IDE.
+
+## License 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+MIT permissions with usage of this code, permitting users to freely use, modify, and distribute this code with limited libility.
+
+ ## Future Developments 
+In upcoming versions, we plan to introduce the following enhancements to the Workout Tracker:
+
+- Edit Past Workout Information: Users will be able to edit their previous workout details, allowing for more flexibility and accuracy in tracking their progress.
+
+- Multiple Workouts Storage: The application will support storing and managing more than one workout at a time. This will enable users to have a comprehensive view of their training history.
+
+- Remote Database Implementation: Integration with remote databases will significantly expand the capabilities of the application. Storing exercise information and utilizing predictive algorithms, such as estimating one-rep max percentages, will empower athletes to make informed decisions and enhance their overall performance.
+
+We are committed to continuously improving the Workout Tracker to provide athletes with a valuable tool for optimizing their training routines.
 
  ## Video Tutorial
  [Watch](https://drive.google.com/file/d/1RWeCh3zzZXP472Lq2d843py4OwK7tcDZ/view)
